@@ -18,12 +18,20 @@
                 <a href="#">Login</a>
             </li>
             <li>
-                <a href="#">cadastrar</a>
+                <a href="/cadastrarReporter">cadastrar</a>
             </li>
         </ul>
 
     </nav>
 </header>
     <h1>Noticias Diárias</h1>
+
+<!-- Exibir a mensagem de erro se houver -->
+<c:if test="${not empty msg}">
+    <div style="color: red; font-weight: bold;">
+            ${msg}
+    </div>
+</c:if>
+
 </body>
 </html>

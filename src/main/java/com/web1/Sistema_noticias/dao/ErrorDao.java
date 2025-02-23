@@ -1,4 +1,4 @@
-package com.web1.Sistema_noticias.model;
+package com.web1.Sistema_noticias.dao;
 
 public class ErrorDao extends Exception {
 
