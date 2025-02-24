@@ -46,6 +46,33 @@ public class ReporterDaoClasse implements ReporterDaoInterface{
     }
 
     @Override
+    public Reporter Logar(String login, String senha) throws ErrorDao {
+        try {
+            PreparedStatement psmt = con.prepareStatement("select  * from usuario where login = ? and senha = ? ");
+            psmt.setString(1,login);
+            psmt.setString(2,senha);
+            ResultSet rs = psmt.executeQuery();
+
+            if(rs.next()){
+                Reporter r = new Reporter(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4)
+                );
+                rs.close();
+                psmt.close();
+            return r;
+            }
+            rs.close();
+            psmt.close();
+        } catch (SQLException e) {
+            throw new ErrorDao(e);
+        }
+        return null;
+    }
+
+    @Override
     public Reporter buscar(int id) {
         return null;
     }

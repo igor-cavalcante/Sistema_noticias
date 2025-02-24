@@ -2,30 +2,41 @@
 <!doctype html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Continuando com Spring MVC</title>
+    <title>Sistema Noticias</title>
+    <link rel="stylesheet" type="text/css" href="estiloNews.css"/>
 </head>
+<style>
+
+</style>
 <body>
 
 <header>
     <nav>
         <ul>
             <li>
+                <a href="/login">Login</a>
+            </li>
+            <li>
+                <a href="/cadastrarReporter">Criar Conta</a>
+            </li>
+            <li>
+                <a href="#">Cadastrar Noticia</a>
+            <li>
+        </ul>
+        <hr>
+        <ul>
+            <li>
                 <a href="#">teste noticia</a>
-            </li>
-            <li>
-                <a href="#">Login</a>
-            </li>
-            <li>
-                <a href="/cadastrarReporter">cadastrar</a>
             </li>
         </ul>
 
+
     </nav>
 </header>
-    <h1>Noticias Diárias</h1>
 
+<main>
 <!-- Exibir a mensagem de erro se houver -->
 <c:if test="${not empty msg}">
     <div style="color: red; font-weight: bold;">
@@ -33,5 +44,8 @@
     </div>
 </c:if>
 
+<h1>Noticias Diárias</h1>
+
+</main>
 </body>
 </html>
