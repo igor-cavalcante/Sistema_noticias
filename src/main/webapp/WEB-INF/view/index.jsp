@@ -19,7 +19,7 @@
                 <a href="/login">Login</a>
             </li>
             <li>
-                <a href="/cadastrarReporter">Criar Conta</a>
+                <a href="/cadastrarReporterView">Criar Conta</a>
             </li>
             <li>
                 <a href="#">Cadastrar Noticia</a>

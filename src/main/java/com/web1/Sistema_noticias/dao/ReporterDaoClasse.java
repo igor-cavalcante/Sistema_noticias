@@ -40,6 +40,7 @@ public class ReporterDaoClasse implements ReporterDaoInterface{
             }
             rs.close();
             System.out.println("usuario"+reporter.toString()+" inserido com sucesso");
+            psmt.close();
         } catch (SQLException e) {
             throw new ErrorDao(e);
         }

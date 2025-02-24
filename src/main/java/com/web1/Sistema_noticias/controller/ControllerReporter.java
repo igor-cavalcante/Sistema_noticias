@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller()
 public class ControllerReporter {
 
-    @GetMapping("/cadastrarReporter")
+    @GetMapping("/cadastrarReporterView")
     public String view(){
         return "CadastrarReporter";
     }

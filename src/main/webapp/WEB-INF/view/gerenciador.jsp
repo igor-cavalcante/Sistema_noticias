@@ -10,6 +10,6 @@
 
 <h1>Bem vindo de volta</h1>
 
-<h1><a href="/cadastrarNoticia" >Cadastrar noticia</a></h1>
+<h1><a href="/cadastrarNoticiaView" >Cadastrar noticia</a></h1>
 </body>
 </html>

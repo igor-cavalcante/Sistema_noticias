@@ -7,6 +7,11 @@ public class Reporter {
     private String login ;
     private String senha ;
 
+
+    public Reporter(int id) {
+        this.id = id;
+    }
+
     public Reporter(int id, String name, String login, String senha) {
         this.id = id;
         this.name = name;
