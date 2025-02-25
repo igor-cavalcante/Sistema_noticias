@@ -160,4 +160,24 @@ public class ControllerGerenciador {
         }
     }
 
+    @GetMapping("/deletarNoticia/{id}")
+    public String deletarNoticia(@PathVariable("id") int id, Model model,HttpServletRequest request) {
+       if(isUserLoggedIn(request)){
+
+           NewsDaoInterface dao = new NewsDaoClasse();
+           try {
+               dao.deleteById(id);
+               dao.sair();
+           } catch (ErrorDao e) {
+               model.addAttribute("msg", "erro ao deletar os dados" + e.getMessage());
+               return "gerenciador";
+           }
+           return "redirect:/gerenciador";
+       }else {
+           model.addAttribute("msg", "Você precisa se logar primeiro");
+           return "login";  // Retorna diretamente a página de login sem redirecionar
+
+       }
+    }
+
 }

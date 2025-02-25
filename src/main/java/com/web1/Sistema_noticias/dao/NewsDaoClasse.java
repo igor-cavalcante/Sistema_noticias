@@ -45,14 +45,13 @@ public class NewsDaoClasse implements NewsDaoInterface{
     @Override
     public News buscar(int id) throws ErrorDao {
 
-        News news = null;
+       News news = new News();
         try {
             PreparedStatement psmt = con.prepareStatement("select  * from noticia where id = ?");
             psmt.setInt(1, id);
             ResultSet rs = psmt.executeQuery();
 
             if(rs.next()){
-                news = new News();
                 news.setId(rs.getInt("id"));
                 news.setTitulo(rs.getString("titulo"));
                 news.setLide(rs.getString("lide"));
@@ -148,14 +147,17 @@ public class NewsDaoClasse implements NewsDaoInterface{
         return lista;
     }
 
-    @Override
-    public void deletar(News news) throws ErrorDao {
-
-    }
 
     @Override
     public void deleteById(int id) throws ErrorDao {
-
+        try {
+            PreparedStatement psmt = con.prepareStatement("DELETE FROM noticia WHERE id = ?");
+            psmt.setInt(1, id);
+            psmt.executeUpdate();
+            psmt.close();
+        } catch (SQLException e) {
+            throw new ErrorDao(e);
+        }
     }
 
     @Override

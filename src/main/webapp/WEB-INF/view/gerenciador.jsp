@@ -67,7 +67,7 @@
             <!-- Botões Editar e Excluir -->
             <div class="action-buttons">
                 <a href="/editarNoticia/${noticia.getId()}" class="btn edit-btn">Editar</a>
-                <a href="/excluirNoticia/${noticia.getId()}" class="btn delete-btn" onclick="return confirm('Tem certeza que deseja excluir esta notícia?')">Excluir</a>
+                <a href="/deletarNoticia/${noticia.getId()}" class="btn delete-btn" onclick="return confirm('Tem certeza que deseja excluir esta notícia?')">Excluir</a>
             </div>
         </div>
     </c:forEach>

@@ -28,13 +28,14 @@
         <h2>Lista de Notícias</h2>
         <ul>
             <c:forEach var="noticia" items="${noticias}">
-                <li><a href="/noticia/${noticia.getId()}">${noticia.getTitulo()}</a></li>
+                <li><a href="/noticiaNews/${noticia.getId()}">${noticia.getTitulo()}</a></li>
             </c:forEach>
         </ul>
     </aside>
 
+
     <main>
-        <!-- Exibir a mensagem de erro se houver -->
+
         <c:if test="${not empty msg}">
             <div class="error-message">${msg}</div>
         </c:if>

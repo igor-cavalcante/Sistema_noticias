@@ -42,7 +42,7 @@ header .top-nav ul li a:hover {
 
 .container {
     display: flex;
-    margin-top: 80px; /* Espaço para o cabeçalho */
+    margin-top: 10px; /* Espaço para o cabeçalho */
 }
 
 .sidebar {

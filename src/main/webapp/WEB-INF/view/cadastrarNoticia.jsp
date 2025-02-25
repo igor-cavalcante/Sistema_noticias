@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="estiloReporter.css">
     <title>Gerenciador</title>
 </head>
 <body>
@@ -18,6 +19,7 @@
 <h1>Form para cadastro da notícia</h1>
 
 <form action="/inserirNoticia" method="POST">
+
     <label for="titulo">Título:</label>
     <input type="text" id="titulo" name="titulo" required><br><br>
 

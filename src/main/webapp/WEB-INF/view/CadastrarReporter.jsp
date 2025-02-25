@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Form Cadastro</title>
+    <link rel="stylesheet" href="estiloReporter.css"></link>
 </head>
 <body>
 <header>
@@ -17,7 +18,7 @@
     </header>
 
 
-<h1>Form para cadastro do reporterad</h1>
+<h1>Form para cadastro do reporter</h1>
 
 <form method="post" action="/inserirReporter">
     <fieldset>
