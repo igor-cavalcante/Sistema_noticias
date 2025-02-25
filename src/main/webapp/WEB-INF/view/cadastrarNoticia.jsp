@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<!-- Exibir a mensagem de erro se houver -->
+<c:if test="${not empty msg}">
+    <div style="color: red; font-weight: bold;">
+            ${msg}
+    </div>
+</c:if>
+
 <h1>Form para cadastro da notícia</h1>
 
 <form action="/inserirNoticia" method="POST" enctype="multipart/form-data">

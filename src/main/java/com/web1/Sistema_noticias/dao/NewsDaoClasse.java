@@ -5,6 +5,7 @@ import com.web1.Sistema_noticias.model.Reporter;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 public class NewsDaoClasse implements NewsDaoInterface{
@@ -67,5 +68,14 @@ public class NewsDaoClasse implements NewsDaoInterface{
     @Override
     public void editar(int id) throws ErrorDao {
 
+    }
+
+    @Override
+    public void sair() throws ErrorDao {
+        try {
+            con.close();
+        } catch (SQLException e) {
+            throw new ErrorDao(e);
+        }
     }
 }

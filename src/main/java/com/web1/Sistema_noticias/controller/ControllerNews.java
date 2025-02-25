@@ -35,6 +35,27 @@ public class ControllerNews {
         }
         return false;
     }
+
+    /**
+     * Recupera o ID do usuário a partir do cookie de sessão.
+     * @param request HttpServletRequest
+     * @return ID do usuário ou -1 se não autenticado
+     */
+    private int recuperarIdUsuario(HttpServletRequest request) {
+        if (request.getCookies() != null) {
+            for (Cookie c : request.getCookies()) {
+                if ("session".equals(c.getName())) {
+                    try {
+                        return Integer.parseInt(c.getValue());
+                    } catch (NumberFormatException e) {
+                        return -1; // ID inválido no cookie
+                    }
+                }
+            }
+        }
+        return -1; // Usuário não autenticado
+    }
+
     @GetMapping("/gerenciador")
     public String gerenciador(HttpServletRequest request, Model model) {
         if (isUserLoggedIn(request)) {
@@ -50,23 +71,32 @@ public class ControllerNews {
 
     }
 
+
+
     @PostMapping("/inserirNoticia")
-    public  String inserirNoticiaPost(String titulo, String lide, String corpo, MultipartFile imagem, Model model) {
+    public  String inserirNoticiaPost(String titulo, String lide, String corpo, MultipartFile imagem, Model model, HttpServletRequest request) {
+
         try {
+            int id = recuperarIdUsuario(request);
             byte[] imagemBytes = imagem.getBytes();
-            Reporter reporter = new Reporter(13);
+            Reporter reporter = new Reporter(id);
             News news = new News(imagemBytes,titulo,lide,corpo,reporter);
             NewsDaoInterface dao = new NewsDaoClasse();
             dao.inserir(news);
+            dao.sair();
 
+            model.addAttribute("msg", "Dados cadastrados com sucesso!");
+            return "cadastrarNoticia";
 
         } catch (ErrorDao e) {
-            throw new RuntimeException(e);
+            // Aqui você pode adicionar um log ou enviar um feedback para o usuário
+            model.addAttribute("msg", "erro ao cadastrar os dados" + e.getMessage());
+            return "cadastrarNoticia"; // Pode enviar um atributo de erro para o frontend
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            // Aqui você pode adicionar um log ou enviar um feedback para o usuário
+            model.addAttribute("msg", "erro ao cadastrar os dados" + e.getMessage());
+            return "cadastrarNoticia"; // Pode enviar um atributo de erro para o frontend
         }
-
-        return "cadastrarNoticia";
     }
 
 

@@ -13,6 +13,7 @@ public interface NewsDaoInterface {
     public void deletar(News news) throws ErrorDao;
     public void deleteById(int id) throws ErrorDao;
     public void editar(int id ) throws ErrorDao;
+    public void sair() throws ErrorDao;
 
 
 
