@@ -8,9 +8,8 @@ public class Reporter {
     private String senha ;
 
 
-    public Reporter(int id) {
-        this.id = id;
-    }
+    public Reporter() {}
+
 
     public Reporter(int id, String name, String login, String senha) {
         this.id = id;

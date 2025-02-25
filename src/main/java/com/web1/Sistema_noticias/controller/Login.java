@@ -33,6 +33,13 @@ public class Login {
                 Cookie sessionCookie = new Cookie("session", String.valueOf(reporter.getId()));
                 sessionCookie.setMaxAge(3600);
                 sessionCookie.setPath("/");
+
+                // Criando um cookie para o nome do usuário
+                Cookie sessionCookieName = new Cookie("sessionName", reporter.getName());
+                sessionCookieName.setMaxAge(3600); // O cookie vai expirar após 1 hora
+                sessionCookieName.setPath("/");
+
+                response.addCookie(sessionCookieName);
                 response.addCookie(sessionCookie);
                 return "redirect:/gerenciador";
             }else {

@@ -1,5 +1,6 @@
 package com.web1.Sistema_noticias.dao;
 
+import com.web1.Sistema_noticias.model.News;
 import com.web1.Sistema_noticias.model.Reporter;
 
 import javax.sql.DataSource;
@@ -7,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReporterDaoClasse implements ReporterDaoInterface{
@@ -80,7 +82,23 @@ public class ReporterDaoClasse implements ReporterDaoInterface{
 
     @Override
     public List<Reporter> listar() {
-        return List.of();
+
+        List<Reporter> lista = new ArrayList<Reporter>();
+
+        PreparedStatement psmt = null;
+
+        try {
+            psmt= con.prepareStatement("SELECT * from reporter");
+            psmt.executeQuery();
+            ResultSet rs = psmt.getResultSet();
+            while(rs.next()){
+                Reporter reporter = new Reporter();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return lista;
     }
 
     @Override

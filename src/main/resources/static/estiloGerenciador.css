@@ -40,53 +40,8 @@ header .top-nav ul li a:hover {
     text-decoration: underline;
 }
 
-.container {
-    display: flex;
-    margin-top: 80px; /* Espaço para o cabeçalho */
-}
-
-.sidebar {
-    width: 220px; /* Tamanho da barra lateral */
-    background-color: #333;
-    padding-top: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    position: relative;
-    z-index: 1;
-}
-
-.sidebar h2 {
-    color: white;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar ul li {
-    margin: 10px 0;
-}
-
-.sidebar ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    display: block;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease;
-}
-
-.sidebar ul li a:hover {
-    background-color: #00bcd4;
-    border-radius: 5px;
-}
-
 main {
-    flex: 1;
-    padding: 20px;
+    padding: 80px 20px 20px; /* Padding superior para compensar o cabeçalho fixo */
     background-color: #fff;
     max-width: 1200px;
     margin: 0 auto;
@@ -95,32 +50,43 @@ main {
 h1 {
     text-align: center;
     color: #333;
-    font-size: 36px;
+    font-size: 32px;
     margin-bottom: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #444;
+    font-size: 28px;
+    margin-bottom: 15px;
 }
 
 .news-item {
     background-color: white;
     margin-bottom: 20px;
-    padding: 20px;
+    padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.news-item h2 {
-    font-size: 28px;
+.news-item h3 {
+    font-size: 22px;
     color: #333;
+    margin-bottom: 10px;
 }
 
-.news-item p {
-    font-size: 18px;
+.news-item .lide,
+.news-item .corpo {
+    font-size: 16px;
     color: #555;
     line-height: 1.6;
+    margin-bottom: 10px;
 }
 
 .news-item p.date {
     font-style: italic;
     color: #888;
+    margin-bottom: 10px;
 }
 
 .error-message {
@@ -128,6 +94,40 @@ h1 {
     font-weight: bold;
     text-align: center;
     margin: 10px 0;
+}
+
+.action-buttons {
+    margin-top: 20px;
+}
+
+.action-buttons .btn {
+    padding: 8px 16px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.edit-btn {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
 }
 
 footer {

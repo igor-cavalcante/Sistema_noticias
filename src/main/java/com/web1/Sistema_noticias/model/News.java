@@ -4,24 +4,25 @@ import java.time.LocalDate;
 
 public class News {
     private int id;
-    private byte[] imagen;
     private String titulo;
     private String lide;
     private String corpo;
     private LocalDate data;
     public Reporter reporter;
 
-    public News( byte[] imagen , String titulo, String lide, String corpo, Reporter reporter) {
-        this.imagen = imagen;
+    public News(){}
+
+
+    public News(  String titulo, String lide, String corpo, Reporter reporter) {
+
         this.titulo = titulo;
         this.lide = lide;
         this.corpo = corpo;
         this.reporter = reporter;
     }
-    public News(int id, String titulo,byte[] imagen , String lide, String corpo, LocalDate data, Reporter reporter) {
+    public News(int id, String titulo, String lide, String corpo, LocalDate data, Reporter reporter) {
         this.id = id;
         this.titulo = titulo;
-        this.imagen = imagen;
         this.lide = lide;
         this.corpo = corpo;
         this.data = data;
@@ -69,6 +70,14 @@ public class News {
         this.data = data;
     }
 
+    public void setReporter(Reporter reporter) {
+        this.reporter = reporter;
+    }
+
+    public Reporter getReporter(){
+        return reporter;
+    }
+
     // Método toString para facilitar a visualização
     @Override
     public String toString() {
@@ -82,11 +91,5 @@ public class News {
                 '}';
     }
 
-    public byte[] getImagen() {
-        return imagen;
-    }
 
-    public void setImagen(byte[] imagen) {
-        this.imagen = imagen;
-    }
 }
