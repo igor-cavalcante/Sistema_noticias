@@ -31,7 +31,7 @@ public class ControllerNews {
     }
 
 
-    @GetMapping("/noticiaNews/{id}")
+    @GetMapping("/noticiaNews/{id:\\d+}")
     public String noticia(@PathVariable("id") int id, Model model) {
         try {
             NewsDaoInterface dao = new  NewsDaoClasse();

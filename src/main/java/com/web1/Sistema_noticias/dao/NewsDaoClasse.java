@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 public class NewsDaoClasse implements NewsDaoInterface{
@@ -56,6 +55,12 @@ public class NewsDaoClasse implements NewsDaoInterface{
                 news.setTitulo(rs.getString("titulo"));
                 news.setLide(rs.getString("lide"));
                 news.setCorpo(rs.getString("corpo"));
+
+                // Convertendo data para LocalDate
+                java.sql.Date sqlDate = rs.getDate("data");
+                if (sqlDate != null) {
+                    news.setData(sqlDate.toLocalDate());
+                }
 
             }
         } catch (SQLException e) {

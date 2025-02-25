@@ -10,9 +10,9 @@
 <body>
 <header>
 <!-- Exibir a mensagem de erro se houver -->
-<c:if test="${not empty erro}">
+<c:if test="${not empty msg}">
     <div style="color: red; font-weight: bold;">
-            ${erro}
+            ${msg}
     </div>
 </c:if>
     </header>
@@ -23,11 +23,11 @@
 <form method="post" action="/inserirReporter">
     <fieldset>
         <label>Nome:</label>
-        <input type="text" name="nome" placeholder="Nome Completo"/>
+        <input type="text" name="nome" placeholder="Nome Completo" required/>
         <label>Login:</label>
-        <input type="text" name="login" placeholder="Login"/>
+        <input type="text" name="login" placeholder="Login" required/>
         <label>Senha:</label>
-        <input type="password" name="senha" placeholder="Senha"/>
+        <input type="password" name="senha" placeholder="Senha" required/>
         <input type="submit" value="Cadastrar"/>
     </fieldset>
 

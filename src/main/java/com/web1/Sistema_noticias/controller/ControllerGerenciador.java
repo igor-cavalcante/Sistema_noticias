@@ -45,24 +45,23 @@ public class ControllerGerenciador {
                     try {
                         return Integer.parseInt(c.getValue());
                     } catch (NumberFormatException e) {
-                        return -1; // ID inválido no cookie
+                        return -1;
                     }
                 }
             }
         }
-        return -1; // Usuário não autenticado
+        return -1;
     }
 
     @GetMapping("/gerenciador")
     public String gerenciador(HttpServletRequest request, Model model) {
         if (isUserLoggedIn(request)) {
-            // Recupera o ID do usuário logado (assumindo que a função recupera o ID do cookie)
+
             int id = recuperarIdUsuario(request);
             // Cria um objeto Reporter com o ID recuperado
             Reporter reporter = new Reporter();
             reporter.setId(id);
 
-            // Chama o método DAO para buscar as notícias do reporter
             NewsDaoInterface dao = new NewsDaoClasse();
 
             try {
@@ -71,15 +70,14 @@ public class ControllerGerenciador {
                 model.addAttribute("noticias", noticias);
                 dao.sair();
 
-                // Exibe a página do gerenciador
                 return "gerenciador";
             } catch (ErrorDao e) {
                 model.addAttribute("msg", "Erro ao buscar as noticias do reporter");
-                return "gerenciador";  // Retorna diretamente a página de login sem redirecionar
+                return "gerenciador";
             }
         }
         model.addAttribute("msg", "Você precisa se logar primeiro");
-        return "login";  // Retorna diretamente a página de login sem redirecionar
+        return "login";
     }
 
     @GetMapping("/cadastrarNoticiaView")
@@ -102,15 +100,12 @@ public class ControllerGerenciador {
 
             model.addAttribute("msg", "Dados cadastrados com sucesso!");
             return "cadastrarNoticia";
-
         } catch (ErrorDao e) {
-            // Aqui você pode adicionar um log ou enviar um feedback para o usuário
             model.addAttribute("msg", "erro ao cadastrar os dados" + e.getMessage());
-            return "cadastrarNoticia"; // Pode enviar um atributo de erro para o frontend
+            return "cadastrarNoticia";
         } catch (Exception e) {
-            // Aqui você pode adicionar um log ou enviar um feedback para o usuário
             model.addAttribute("msg", "erro ao cadastrar os dados" + e.getMessage());
-            return "cadastrarNoticia"; // Pode enviar um atributo de erro para o frontend
+            return "cadastrarNoticia";
         }
     }
 
@@ -124,39 +119,45 @@ public class ControllerGerenciador {
                 model.addAttribute("noticia", noticia);
                 return "editarNews";
             } catch (ErrorDao e) {
-                model.addAttribute("noticia", noticia); // Adiciona a notícia ao modelo para a página de edição
-                return "editarNews"; // Retorna a página de edição
+                model.addAttribute("noticia", noticia);
+                return "editarNews";
             }
         }else {
             model.addAttribute("msg", "Você precisa se logar primeiro");
-            return "login";  // Retorna diretamente a página de login sem redirecionar
+            return "login";
         }
     }
 
 
     @PostMapping("/editarNoticia")
     public String editarNoticiaPost( int id, String titulo, String lide, String corpo, Model model, HttpServletRequest request) {
-        try {
 
-            int userId = recuperarIdUsuario(request);
+        if (isUserLoggedIn(request)) {
+            try {
 
-            Reporter reporter = new Reporter();
-            reporter.setId(userId);
+                int userId = recuperarIdUsuario(request);
 
-            News news = new News(titulo, lide, corpo, reporter);
-            news.setId(id);
+                Reporter reporter = new Reporter();
+                reporter.setId(userId);
 
-            NewsDaoInterface dao = new NewsDaoClasse();
-            dao.editar(news);
-            dao.sair();
-            return "redirect:/gerenciador";
+                News news = new News(titulo, lide, corpo, reporter);
+                news.setId(id);
 
-        } catch (ErrorDao e) {
-            model.addAttribute("msg", "Erro ao atualizar os dados: " + e.getMessage());
-            return "editarNews";
-        } catch (Exception e) {
-            model.addAttribute("msg", "Erro ao atualizar os dados: " + e.getMessage());
-            return "editarNews";
+                NewsDaoInterface dao = new NewsDaoClasse();
+                dao.editar(news);
+                dao.sair();
+                return "redirect:/gerenciador";
+
+            } catch (ErrorDao e) {
+                model.addAttribute("msg", "Erro ao atualizar os dados: " + e.getMessage());
+                return "editarNews";
+            } catch (Exception e) {
+                model.addAttribute("msg", "Erro ao atualizar os dados: " + e.getMessage());
+                return "editarNews";
+            }
+        }else{
+            model.addAttribute("msg", "Você precisa se logar primeiro");
+            return "login";
         }
     }
 
@@ -175,7 +176,7 @@ public class ControllerGerenciador {
            return "redirect:/gerenciador";
        }else {
            model.addAttribute("msg", "Você precisa se logar primeiro");
-           return "login";  // Retorna diretamente a página de login sem redirecionar
+           return "login";
 
        }
     }

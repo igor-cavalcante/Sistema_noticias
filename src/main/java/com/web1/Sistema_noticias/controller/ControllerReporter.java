@@ -25,10 +25,10 @@ public class ControllerReporter {
             dao.sair();
             model.addAttribute("msg", "reporter cadastrado com sucesso");
         } catch (ErrorDao e) {
-            // Aqui você pode adicionar um log ou enviar um feedback para o usuário
+
             model.addAttribute("msg", "erro ao cadastrar os dados" + e.getMessage());
-            return "index"; // Pode enviar um atributo de erro para o frontend
+            return "index";
         }
-        return "index";
+        return "CadastrarReporter";
     }
 }

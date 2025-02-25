@@ -25,7 +25,7 @@
 
 <div class="container">
     <aside class="sidebar">
-        <h2>Lista de Notícias</h2>
+        <a href="/"><h2>Lista de Notícias</h2></a>
         <ul>
             <c:forEach var="noticia" items="${noticias}">
                 <li><a href="/noticiaNews/${noticia.getId()}">${noticia.getTitulo()}</a></li>
